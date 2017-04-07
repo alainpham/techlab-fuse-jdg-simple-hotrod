@@ -8,28 +8,16 @@ import org.infinispan.protostream.annotations.ProtoField;
 
 @ProtoDoc("@Indexed")
 public class Event implements Serializable{
-
 	private static final long serialVersionUID = 1L;
-	
-
 	private String uid;
-	
-
 	private Date timestmp;
-	
-
 	private String name;
-	
-
 	private String content;
-	
-	
 	
 	@ProtoField(number = 1)
 	public String getUid() {
 		return uid;
 	}
-	
 	
 	public void setUid(String uid) {
 		this.uid = uid;
@@ -62,6 +50,4 @@ public class Event implements Serializable{
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
-	
 }

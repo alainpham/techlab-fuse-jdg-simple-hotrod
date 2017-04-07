@@ -56,7 +56,7 @@
 				<description>Allows to query based on object fields using lucene search engine (uses alternative imp)</description>
 				<to uri="direct:queryAltOp" />
 			</get>
-			
+
 		</rest>
 		<!-- rest service to get an entry with the key -->
 		<route id="getOpRoute">
@@ -110,28 +110,30 @@
 				<simple>Value inserted</simple>
 			</setBody>
 		</route>
+
+		<!-- alternative query with built in cache manager -->
+
+		<route id="queryAltOpRoute">
+			<from id="queryAltOpStarter" uri="direct:queryAltOp" />
+			<log id="_log1" message="${headers}" />
+			<process id="queryAltOpRouteProcessor" ref="queryProcessor" />
+		</route>
+
 		<!-- rest service to query caches with any indexed field -->
 		<route id="queryOpRoute">
 			<from id="queryOpStarter" uri="direct:queryOp" />
-			<log id="_log1" message="${headers}" />
-			<process id="queryOpRouteProcessor" ref="queryProcessor" />
-		</route>
-
-		<!-- alternative query with built in cache manager -->
-		<route id="queryAltOpRoute">
-			<from id="queryAltOpStarter" uri="direct:queryAltOp" />
-			<log message="Alternative ${headers}"></log>
-			<setHeader headerName="CamelInfinispanCacheName" id="queryAltOpRouteSetCacheName">
+			<log message="Query headers : ${headers}"></log>
+			<setHeader headerName="CamelInfinispanCacheName" id="queryOpRouteSetCacheName">
 				<simple>${headers.cacheName}</simple>
 			</setHeader>
-			<setHeader headerName="CamelInfinispanOperation" id="queryAltOpRouteSetOperation">
+			<setHeader headerName="CamelInfinispanOperation" id="queryOpRouteSetOperation">
 				<constant>CamelInfinispanOperationQuery</constant>
 			</setHeader>
-			<setHeader headerName="CamelInfinispanQueryBuilder" id="queryAltOpRouteSetBuilder">
+			<setHeader headerName="CamelInfinispanQueryBuilder" id="queryOpRouteSetBuilder">
 				<method ref="generateQuery" method="getBuilder" />
 			</setHeader>
-			<to id="queryAltOpRouteToDataGrid" uri="ref:datagrid" />
-			<setBody id="queryAltOpRouteSetResponse">
+			<to id="queryOpRouteToDataGrid" uri="ref:datagrid" />
+			<setBody id="queryOpRouteSetResponse">
 				<simple>${header.CamelInfinispanOperationResult}</simple>
 			</setBody>
 		</route>

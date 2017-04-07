@@ -146,6 +146,7 @@
 					<instructions>
 						<Bundle-SymbolicName>techlab-fuse-jdg-simple-hotrod</Bundle-SymbolicName>
 						<Bundle-Name>techlab-fuse-jdg-simple-hotrod</Bundle-Name>
+						<DynamicImport-Package>*</DynamicImport-Package>
 					</instructions>
 				</configuration>
 			</plugin>
