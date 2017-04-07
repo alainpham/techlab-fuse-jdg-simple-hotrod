@@ -1,5 +1,6 @@
 # techlab-fuse-jdg-simple-hotrod 
 =========================================
+This project shows how to setup a remote connection to Data Grid in Fuse via Hot Rod Client. 
 
 ![overview](https://raw.githubusercontent.com/alainpham/alainpham.github.io/master/assets/images/posts/fuse-data-grid-integration-via-hot-rod-with-persistence-and-indexing-for-advanced-queries/diag.png)
 
@@ -7,7 +8,6 @@ Blog post explaining this project can be found here :
 
 https://alainpham.github.io/posts/fuse-data-grid-integration-via-hot-rod-with-persistence-and-indexing-for-advanced-queries/
 
-Shows how to setup a remote
 
 To build this project use
 ```
